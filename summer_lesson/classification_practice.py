@@ -9,14 +9,13 @@ y0 = torch.zeros(100)              # label = 0
 x1 = torch.normal(-2 * n_data, 1)  # torch.Size([100, 2])
 y1 = torch.ones(100)               # label = 1 
 x = torch.cat((x0, x1), 0).type(torch.FloatTensor)  # torch.Size([100, 2])
-## y 資料形態一定固定 LongTensor
 y = torch.cat((y0, y1), ).type(torch.LongTensor)    # torch.Size([200])
 
 
 ## second part : Create NN
 
 class Net(torch.nn.Module): # class a Network and input a torch module
-    def __init__(self, n_feature, n_hidden, n_output):
+    def __init__(self, n_feature, n_output):
         super(Net, self).__init__() # To inherit things from Net, the standard process must be added
 
     def forward(self, x):

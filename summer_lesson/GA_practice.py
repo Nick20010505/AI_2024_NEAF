@@ -18,8 +18,8 @@ plt.ion()
 for lter in range(iteration):
     distance=[] 
     for j in range(chromosome):
-        #crossover
-        if np.random.rand(1) < 0.3:                   # 隨機跟某一列的做交換
+        # crossover
+        if np.random.rand(1) < 0.3:                   # Randomly swap with a column
             index = int((np.random.rand(1)*10)//1)
             col = int((np.random.rand(1)*2)//1)
             
@@ -27,20 +27,22 @@ for lter in range(iteration):
             population[j, col] = population[index, col]
             population[index,col] = temp
             
-        #mutation
+        # mutation
         if np.random.rand(1) < 0.2:
             population[j,0] = ans_x+(np.random.rand(1))*dis
             population[j,1] = ans_y+(np.random.rand(1))*dis
         
-        d = math.sqrt((population[j,0]-ans_x)**2+(population[j,1]-ans_y)**2)  # 計算每個的距離
+        d = math.sqrt((population[j,0]-ans_x)**2+(population[j,1]-ans_y)**2)  # Calculate the distance of each
         distance.append(d)
-    s = np.argmin(distance)                           # 拿最短距離的 index
+    s = np.argmin(distance)                           # Get the index of the shortest distance
         
     if distance[s] < dis:   
         dis = distance[s]
         best = [population[s, 0],population[s, 1]]
     
     dist = np.copy(np.argsort(distance))
+    
+    ## selection
     for n in range(num):
         population[dist[chromosome-1-n], 0] = population[dist[n], 0]
         population[dist[chromosome-1-n], 1] = population[dist[n], 1]

@@ -19,7 +19,7 @@ class Net(torch.nn.Module): # class a Network and input a torch module
 net = Net(n_feature=1, n_hidden=10, n_output=1) 
 print(net) # network architecture
 
-optimizer = torch.optim.SGD()
+optimizer = torch.optim.SGD(net.parameters(), lr=0.2)
 loss_func = torch.nn.MSELoss()
 
 plt.ion() # something about plotting

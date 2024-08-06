@@ -11,7 +11,6 @@ from sklearn.metrics import confusion_matrix
 #Load data
 train_x = []
 train_x_std = []
-train_x_std_seq = []
 train_y = []
 folder_name = ['Yes', 'No']
 i = 0
